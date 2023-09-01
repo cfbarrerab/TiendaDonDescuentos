@@ -1,0 +1,41 @@
+<script>
+    
+    function precioTotal(socio, tiquet){
+        var total;
+        var s11 = tiquet >= 25;
+        var s12 = tiquet < 50;
+        var s21 = tiquet >= 50;
+        var s22 = tiquet < 100;
+        var s31 = tiquet >= 100;
+        var ns10 = tiquet >= 100 ;
+
+        if (socio == "SI"){
+            
+                if (s11 && s12){
+                    total = tiquet - 1;
+                } else if (s21 && s22){
+                    total = 0.95 * tiquet;
+                } else if (s31){
+                    total = tiquet - 15;
+                } else {
+                    total = "NO APLICA DESCUENTO A PESAR DE SER SOCIO";}
+            
+            
+
+        } else if (socio == "NO"){
+            if(ns10){
+                total = tiquet -5;
+            } else {                 
+                total = "NO ES SOCIO Y NO APLICA NINGUN DESCUENTO"
+            }
+
+        } else {
+            total = "INDEFINIDO, DEBE INDICAR SI ES SOCIO O NO"
+        }
+        return "Debe pagar " + total + " euros.";
+        }
+        
+
+    console.log(precioTotal("SI", 200));
+    console.log(precioTotal("NO", 99));
+</script>
